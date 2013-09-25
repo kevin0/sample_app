@@ -9,6 +9,8 @@ group :development do
 	# Use sqlite3 as the database for Active Record
 	#gem 'sqlite3'
 	gem 'rspec-rails', '2.13.1'
+	gem 'spork-rails', '4.0.0'
+	gem 'guard-rspec', '2.5.0'
 end
 
 group :production do
