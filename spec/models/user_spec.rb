@@ -55,6 +55,15 @@ describe User do
 		end
 	end
 
+	describe "email downcasing" do
+		let(:mixed_case_email) {"Foo@BaR.COM"}
+		it "should be saved in lower-case" do
+			@user.email = mixed_case_email
+			@user.save
+			expect(@user.reload.email).to eq mixed_case_email.downcase
+		end
+	end
+
 	describe "when email is not present" do
 		before {@user.email = " "}
 		it {should_not be_valid}
@@ -70,7 +79,8 @@ describe User do
 				"user_at_foo.org",
 				"example.user@foo.",
 				"foo@bar_baz.com",
-				"foo@bar+baz.com"
+				"foo@bar+baz.com",
+				"foo@bar..com"
 			]
 			addresses.each do |invalid_address|
 				@user.email = invalid_address

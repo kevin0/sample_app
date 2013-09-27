@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
 		length: {maximum: 50}
 
 	# not RFC 5322
-	VALID_EMAIL_REGEX = /\A[\w\+\-\.]+@[a-z\d\-.]+\.[a-z]+\z/i
+	# VALID_EMAIL_REGEX = /\A[\w\+\-\.]+@[a-z\d\-.]+\.[a-z]+\z/i
+	VALID_EMAIL_REGEX = /\A[\w\+\-\.]+@([a-z\d\-]+\.)+[a-z]+\z/i
 	validates :email, 
  		presence: true, 
  		length: {maximum: 50}, 
